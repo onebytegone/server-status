@@ -11,6 +11,8 @@ script:
    - npm --version
    - grunt standards
    - npm test
+   - grunt build
+   - grunt build --debug
 
 # For code coverage:
 after_success:
