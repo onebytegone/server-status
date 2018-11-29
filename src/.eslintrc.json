@@ -1,0 +1,7 @@
+{
+   "extends": "../.eslintrc.json",
+   "globals": {
+      "window": true,
+      "document": true
+   }
+}
