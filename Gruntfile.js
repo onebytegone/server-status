@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('underscore');
+var _ = require('underscore'),
+    envify = require('envify/custom');
 
 module.exports = function(grunt) {
 
@@ -49,6 +50,12 @@ module.exports = function(grunt) {
       browserify: {
          build: {
             files: { '<%= project.dist.js.main %>': [ '<%= project.src.js.main %>' ] },
+            options: {
+               transform: [
+                  [ 'stringify', { minify: false, appliesTo: { includeExtensions: [ '.html' ] } } ],
+                  [ envify({ NODE_ENV: DEBUG ? 'development' : 'production' }), { global: true } ],
+               ],
+            },
          },
          thirdparty: {
             files: { '<%= project.dist.js.thirdparty %>': [ '<%= project.src.js.thirdparty %>' ] },
@@ -138,7 +145,11 @@ module.exports = function(grunt) {
             tasks: [ 'sass:build' ],
          },
          js: {
-            files: [ '<%= project.src.js.base %>/**/*.js', '!<%= project.src.js.thirdparty %>' ],
+            files: [
+               '<%= project.src.js.base %>/**/*.js',
+               '<%= project.src.js.base %>/**/*.html',
+               '!<%= project.src.js.thirdparty %>',
+            ],
             tasks: [ 'browserify:build', 'uglify:build' ],
          },
          thirdparty: {

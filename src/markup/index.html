@@ -7,7 +7,13 @@
       <link rel="stylesheet" href="css/thirdparty.css">
    </head>
    <body>
-      <div class="app"></div>
+      <div id="app">
+         <status-widget
+            v-for="(server, index) in servers"
+            :key="`server-${index}`"
+            :server="server"
+            ></status-widget>
+      </div>
       <script src="js/thirdparty.js"></script>
       <script src="js/main.js"></script>
    </body>
