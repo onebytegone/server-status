@@ -24,9 +24,10 @@ module.exports = function(grunt) {
             markup: {
                base: '<%= project.src.base %>/markup',
             },
-            sass: {
-               base: '<%= project.src.base %>/sass',
-               main: '<%= project.src.sass.base %>/main.scss',
+            scss: {
+               base: '<%= project.src.base %>/scss',
+               all: '<%= project.src.base %>/scss/**/*.scss',
+               main: '<%= project.src.scss.base %>/main.scss',
             },
             css: {
                thirdparty: 'node_modules/semantic-ui-css/semantic.css',
@@ -85,7 +86,7 @@ module.exports = function(grunt) {
          },
 
          build: {
-            files: { '<%= project.dist.css.main %>': '<%= project.src.sass.main %>' },
+            files: { '<%= project.dist.css.main %>': '<%= project.src.scss.main %>' },
          },
       },
 
@@ -109,6 +110,13 @@ module.exports = function(grunt) {
 
       eslint: {
          target: [ 'Gruntfile.js', 'src/**/*.js', 'tests/**/*.js' ],
+      },
+
+      sasslint: {
+         options: {
+            configFile: 'node_modules/sass-lint-config-silvermine/sass-lint.yml',
+         },
+         target: '<%= project.src.scss.all %>',
       },
 
       browserSync: {
@@ -141,7 +149,7 @@ module.exports = function(grunt) {
             tasks: [ 'copy:markup' ],
          },
          sass: {
-            files: '<%= project.src.sass.base %>/**/*.scss',
+            files: '<%= project.src.scss.base %>/**/*.scss',
             tasks: [ 'sass:build' ],
          },
          js: {
@@ -167,9 +175,10 @@ module.exports = function(grunt) {
    grunt.loadNpmTasks('grunt-contrib-uglify');
    grunt.loadNpmTasks('grunt-contrib-watch');
    grunt.loadNpmTasks('grunt-sass');
+   grunt.loadNpmTasks('grunt-sass-lint');
    grunt.loadNpmTasks('grunt-eslint');
 
-   grunt.registerTask('standards', [ 'eslint' ]);
+   grunt.registerTask('standards', [ 'eslint', 'sasslint' ]);
    grunt.registerTask('build', [
       'copy:markup',
       'sass:build',
