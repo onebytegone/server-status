@@ -12,7 +12,15 @@ script:
    - grunt standards
    - npm test
    - grunt build
-   - grunt build --debug
+
+deploy:
+   provider: pages
+   local-dir: dist
+   skip-cleanup: true
+   committer-from-gh: true
+   keep-history: true
+   on:
+      branch: master
 
 # For code coverage:
 after_success:
