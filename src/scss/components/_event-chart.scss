@@ -1,0 +1,26 @@
+// --------------------------------------
+// EventChart Component Styling
+// --------------------------------------
+
+.event-chart {
+   display: flex;
+   border: 1px solid #2e2e2e;
+   border-radius: 2px;
+   padding: 2px;
+}
+
+.timeslice {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   width: 6px;
+   margin-top: 6px;
+}
+
+.timeslice .entry {
+   background-color: #6f6f6f;
+   width: 4px;
+   height: 4px;
+   border-radius: 1px;
+   margin: 1px;
+}

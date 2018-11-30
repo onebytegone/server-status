@@ -8,11 +8,18 @@
    </head>
    <body>
       <div id="app">
-         <status-widget
-            v-for="(server, index) in servers"
-            :key="`server-${index}`"
-            :server="server"
-            ></status-widget>
+         <div class="header">
+            <h1>Server Status</h1>
+            <p class="current-time">{{ timestampText }}</p>
+         </div>
+         <div class="server-list">
+            <status-widget
+               v-for="(server, index) in servers"
+               :key="`server-${index}`"
+               :server="server"
+               :timestamp="timestamp"
+               ></status-widget>
+         </div>
       </div>
       <script src="js/thirdparty.js"></script>
       <script src="js/main.js"></script>

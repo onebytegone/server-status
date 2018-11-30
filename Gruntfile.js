@@ -14,12 +14,18 @@ module.exports = function(grunt) {
       project: {
          src: {
             base: 'src',
+            data: {
+               base: '<%= project.src.base %>/data',
+            },
             js: {
                base: '<%= project.src.base %>/js',
                main: '<%= project.src.js.base %>/main.js',
                thirdparty: [
                   '<%= project.src.js.base %>/thirdparty.js',
                ],
+            },
+            assets: {
+               fontAwesome: 'node_modules/font-awesome/fonts',
             },
             markup: {
                base: '<%= project.src.base %>/markup',
@@ -35,6 +41,9 @@ module.exports = function(grunt) {
          },
          dist: {
             base: 'dist',
+            assets: {
+               fonts: '<%= project.dist.base %>/fonts',
+            },
             css: {
                base: '<%= project.dist.base %>/css',
                main: '<%= project.dist.css.base %>/main.css',
@@ -101,9 +110,19 @@ module.exports = function(grunt) {
       },
 
       copy: {
+         assets: {
+            files: [
+               { expand: true, cwd: '<%= project.src.assets.fontAwesome %>', src: '*', dest: '<%= project.dist.assets.fonts %>' },
+            ],
+         },
          markup: {
             files: [
                { expand: true, cwd: '<%= project.src.markup.base %>', src: 'index.html', dest: '<%= project.dist.base %>' },
+            ],
+         },
+         data: {
+            files: [
+               { expand: true, cwd: '<%= project.src.data.base %>', src: 'sample-data.json', dest: '<%= project.dist.base %>' },
             ],
          },
       },
@@ -180,7 +199,7 @@ module.exports = function(grunt) {
 
    grunt.registerTask('standards', [ 'eslint', 'sasslint' ]);
    grunt.registerTask('build', [
-      'copy:markup',
+      'copy',
       'sass:build',
       'cssmin:thirdparty',
       'browserify:build',

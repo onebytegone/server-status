@@ -1,0 +1,22 @@
+// --------------------------------------
+// App Styling
+// --------------------------------------
+
+.header {
+   max-width: 1024px;
+   margin: auto;
+   padding: 0 2em;
+   color: #aaaaaa;
+}
+
+.current-time {
+   color: #5e5e5e;
+}
+
+.server-list {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   max-width: 1024px;
+   margin: auto;
+}

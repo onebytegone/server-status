@@ -1,0 +1,35 @@
+// --------------------------------------
+// StatusWidget Component Styling
+// --------------------------------------
+
+.status-widget {
+   margin: 1.5em;
+   h2 {
+      margin-bottom: 0.25em;
+   }
+}
+
+.status-row {
+   display: flex;
+   align-items: center;
+}
+
+.status-info {
+   margin: 0;
+   margin-right: 1em;
+}
+
+.status-info ul {
+   list-style-type: none;
+   margin: 1em 0;
+   padding: 0;
+}
+
+.status-info li {
+   margin: 1em;
+}
+
+.last-update {
+   color: #5e5e5e;
+   margin: 0;
+}

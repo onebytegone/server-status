@@ -1,1 +1,12 @@
-<h1>{{ server.name }}</h1>
+<div class="status-widget">
+   <h2>{{ server.name }}</h2>
+   <div class="status-row">
+      <div class="status-info">
+         <ul>
+            <li v-for="item in infoItems" :key="item.key"><i v-if="item.icon" class="fa" :class="item.icon"></i>{{ item.value}}</li>
+         </ul>
+         <p class="last-update">{{ lastUpdateText }}</p>
+      </div>
+      <event-chart :events="server.events" :timestamp="timestamp"></event-chart>
+   </div>
+</div>

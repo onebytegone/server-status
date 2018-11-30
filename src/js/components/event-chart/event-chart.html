@@ -1,0 +1,9 @@
+<div class="event-chart">
+   <div class="timeslice"
+      v-for="(timeslice, index) in eventTimeslices"
+      :key="`timeslice-${index}`">
+      <div class="entry"
+         v-for="(event, index) in timeslice"
+         :key="`event-${index}`"></div>
+   </div>
+</div>
