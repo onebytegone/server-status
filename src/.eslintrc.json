@@ -1,7 +1,5 @@
 {
-   "extends": "../.eslintrc.json",
-   "globals": {
-      "window": true,
-      "document": true
-   }
+
+   "extends": "@silvermine/eslint-config/browser"
+
 }
