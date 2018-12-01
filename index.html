@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/thirdparty.css">
+   </head>
+   <body>
+      <div id="app">
+         <div class="header">
+            <h1>Server Status</h1>
+            <p class="current-time">{{ timestampText }}</p>
+         </div>
+         <div class="server-list">
+            <status-widget
+               v-for="(server, index) in servers"
+               :key="`server-${index}`"
+               :server="server"
+               :timestamp="timestamp"
+               ></status-widget>
+         </div>
+      </div>
+      <script src="js/thirdparty.js"></script>
+      <script src="js/main.js"></script>
+   </body>
+</html>
