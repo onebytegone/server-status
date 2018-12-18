@@ -23,6 +23,8 @@
     "grunt-eslint": "19.0.0",
     "grunt-sass": "2.0.0",
     "istanbul": "0.4.5",
+    "jsdom": "13.1.0",
+    "jsdom-global": "3.0.2",
     "mocha": "5.2.0",
     "rewire": "2.5.2",
     "sass-lint-config-silvermine": "1.0.1",
