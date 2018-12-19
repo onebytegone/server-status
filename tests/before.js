@@ -1,5 +1,8 @@
 'use strict';
 
-var stringify = require('stringify');
+var jsdom = require('jsdom-global'),
+    stringify = require('stringify');
+
+jsdom();
 
 stringify.registerWithRequire({ extensions: [ '.html' ] });

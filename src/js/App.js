@@ -12,8 +12,11 @@ module.exports = Vue.extend({
    },
 
    data: function() {
+      var urlParams = new window.URLSearchParams(window.location.search),
+          endpoint = urlParams.get('endpoint') || './sample-data.json';
+
       return {
-         endpoint: './sample-data.json',
+         endpoint: endpoint,
          servers: [],
          timestamp: '0000-00-00 00:00:00',
       };
@@ -34,7 +37,7 @@ module.exports = Vue.extend({
 
    methods: {
       fetchData: function() {
-         return fetch(this.endpoint)
+         return fetch(this.endpoint, { credentials: 'include' })
             .then(function(resp) {
                return resp.json();
             })
